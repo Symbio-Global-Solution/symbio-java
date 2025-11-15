@@ -1,37 +1,35 @@
 package br.com.fiap;
 
-import br.com.fiap.beans.Cargo;
-import br.com.fiap.bo.CargoBO;
-import br.com.fiap.dto.CargoCadastroDTO;
+import br.com.fiap.beans.Vaga;
+import br.com.fiap.bo.VagaBO;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-@Path("/cargos")
+@Path("/vagas")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class CargoResource {
+public class VagaResource {
 
     @Inject
-    CargoBO cargoBO;
+    VagaBO vagaBO;
 
     @GET
     public Response listar() {
         try {
-            return Response.ok(cargoBO.listar()).build();
+            return Response.ok(vagaBO.listar()).build();
         } catch (Exception e) {
             return Response.serverError().entity(e.getMessage()).build();
         }
     }
 
     @POST
-    public Response cadastrar(CargoCadastroDTO dto) {
+    public Response cadastrar(Vaga vaga) {
         try {
-            Cargo cargo = cargoBO.cadastrarInteligente(dto);
-            return Response.status(Response.Status.CREATED).entity(cargo).build();
+            vagaBO.cadastrar(vaga);
+            return Response.status(Response.Status.CREATED).entity(vaga).build();
         } catch (Exception e) {
-            e.printStackTrace();
             return Response.serverError().entity(e.getMessage()).build();
         }
     }

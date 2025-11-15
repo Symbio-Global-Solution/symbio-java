@@ -1,18 +1,20 @@
 package br.com.fiap.dao;
 
-import br.com.fiap.beans.Colaborador; // Certifique-se que o bean Colaborador tem dt_admissao (LocalDate) e salario (double)
+import br.com.fiap.beans.Colaborador;
 import br.com.fiap.conexoes.ConexaoFactory;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@ApplicationScoped
 public class ColaboradorDAO {
 
     public String inserir(Colaborador colaborador) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO T_SYM_COLABORADOR (NM_COLABORADOR, DS_EMAIL, DT_ADMISSAO, SALARIO, ID_CARGO) VALUES (?, ?, ?, ?, ?)";
 
-        try (Connection conexao = new ConexaoFactory().conexao();
+        try (Connection conexao = new ConexaoFactory().getConexao();
              PreparedStatement stmt = conexao.prepareStatement(sql, new String[]{"ID_COLABORADOR"})) {
 
             stmt.setString(1, colaborador.getNm_colaborador());
@@ -35,7 +37,7 @@ public class ColaboradorDAO {
     public String deletar(int idColaborador) throws SQLException, ClassNotFoundException {
         String sql = "DELETE FROM T_SYM_COLABORADOR WHERE ID_COLABORADOR = ?";
 
-        try (Connection conexao = new ConexaoFactory().conexao();
+        try (Connection conexao = new ConexaoFactory().getConexao();
              PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
             stmt.setInt(1, idColaborador);
@@ -51,7 +53,7 @@ public class ColaboradorDAO {
     public String atualizar(Colaborador colaborador) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE T_SYM_COLABORADOR SET NM_COLABORADOR = ?, DS_EMAIL = ?, DT_ADMISSAO = ?, SALARIO = ?, ID_CARGO = ? WHERE ID_COLABORADOR = ?";
 
-        try (Connection conexao = new ConexaoFactory().conexao();
+        try (Connection conexao = new ConexaoFactory().getConexao();
              PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
             stmt.setString(1, colaborador.getNm_colaborador());
@@ -74,7 +76,7 @@ public class ColaboradorDAO {
         List<Colaborador> listaColaboradores = new ArrayList<>();
         String sql = "SELECT ID_COLABORADOR, NM_COLABORADOR, DS_EMAIL, DT_ADMISSAO, SALARIO, ID_CARGO FROM T_SYM_COLABORADOR ORDER BY NM_COLABORADOR";
 
-        try (Connection conexao = new ConexaoFactory().conexao();
+        try (Connection conexao = new ConexaoFactory().getConexao();
              PreparedStatement stmt = conexao.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
@@ -89,7 +91,7 @@ public class ColaboradorDAO {
         Colaborador colaborador = null;
         String sql = "SELECT ID_COLABORADOR, NM_COLABORADOR, DS_EMAIL, DT_ADMISSAO, SALARIO, ID_CARGO FROM T_SYM_COLABORADOR WHERE ID_COLABORADOR = ?";
 
-        try (Connection conexao = new ConexaoFactory().conexao();
+        try (Connection conexao = new ConexaoFactory().getConexao();
              PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
             stmt.setInt(1, idColaborador);
@@ -110,7 +112,7 @@ public class ColaboradorDAO {
 
         Date dataAdmissao = rs.getDate("DT_ADMISSAO");
         if (dataAdmissao != null) {
-            colaborador.setDt_admissao(dataAdmissao.toLocalDate()); // Converte sql.Date para LocalDate
+            colaborador.setDt_admissao(dataAdmissao.toLocalDate());
         }
 
         colaborador.setSalario(rs.getDouble("SALARIO"));

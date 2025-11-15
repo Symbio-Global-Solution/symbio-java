@@ -1,0 +1,21 @@
+### Teste 1: Verificar se está online
+GET http://localhost:8080/hello
+
+### Teste 2: Cadastrar Cargo (Chamar IA e Banco)
+POST http://localhost:8080/cargos
+Content-Type: application/json
+
+{
+  "nm_cargo": "Operador de Telemarketing",
+  "ds_cargo": "Realizar vendas por telefone seguindo script pré-definido",
+  "repetitividade": 95,
+  "criatividade": 5,
+  "interacao": 100
+}
+
+### Teste 3: Listar Cargos (Verificar Banco)
+GET http://localhost:8080/cargos
+
+
+### Teste de Match Positivo
+GET http://localhost:8080/match/1/502

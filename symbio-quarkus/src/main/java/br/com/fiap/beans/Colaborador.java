@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Colaborador {
 
-    //Atributos
+    // Visibilidadem, tipo e atributos
     private int id_colaborador;
     private String nm_colaborador;
     private String ds_email;
@@ -13,11 +13,11 @@ public class Colaborador {
     private double salario;
     private int id_cargo;
 
-    //Construtor
-
+    // Construtor vazio
     public Colaborador() {
     }
 
+    // Construtor Cheio
     public Colaborador(int id_colaborador, String nm_colaborador, String ds_email, LocalDate dt_admissao, double salario, int id_cargo) {
         this.id_colaborador = id_colaborador;
         this.nm_colaborador = nm_colaborador;
@@ -27,6 +27,7 @@ public class Colaborador {
         this.id_cargo = id_cargo;
     }
 
+    // Metodo Setter e Getter
     public int getId_colaborador() {
         return id_colaborador;
     }

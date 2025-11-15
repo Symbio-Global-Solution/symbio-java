@@ -1,24 +1,24 @@
 package br.com.fiap.beans;
 
-public class Colab_Skill {
+public class ColabSkill {
 
-    //Atributos
+    // Visibilidade, tipo e atributos
     private int id_colaborador;
     private int id_skill;
     private int nr_nivel_proficiencia;
 
-    //Construtores
-
-
-    public Colab_Skill() {
+    // Construtor vazio
+    public ColabSkill() {
     }
 
-    public Colab_Skill(int id_colaborador, int id_skill, int nr_nivel_proficiencia) {
+    // Construtor cheio
+    public ColabSkill(int id_colaborador, int id_skill, int nr_nivel_proficiencia) {
         this.id_colaborador = id_colaborador;
         this.id_skill = id_skill;
         this.nr_nivel_proficiencia = nr_nivel_proficiencia;
     }
 
+    // Metodo Setter e Getter
     public int getId_colaborador() {
         return id_colaborador;
     }

@@ -2,7 +2,7 @@ package br.com.fiap;
 
 import br.com.fiap.beans.Colaborador;
 import br.com.fiap.bo.ColaboradorBO;
-
+import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -13,7 +13,8 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class ColaboradorResource {
 
-    private ColaboradorBO colaboradorBO = new ColaboradorBO();
+    @Inject
+    ColaboradorBO colaboradorBO;
 
     @GET
     public Response selecionarTodos() {
@@ -56,7 +57,7 @@ public class ColaboradorResource {
     @Path("/{id}")
     public Response atualizar(@PathParam("id") int id, Colaborador colaborador) {
         try {
-            colaborador.setId_colaborador(id); // Garante que o ID da URL seja usado
+            colaborador.setId_colaborador(id);
             colaboradorBO.atualizarBo(colaborador);
             return Response.ok(colaborador).build();
         } catch (Exception e) {
@@ -70,7 +71,7 @@ public class ColaboradorResource {
     public Response deletar(@PathParam("id") int id) {
         try {
             colaboradorBO.deletarBo(id);
-            return Response.noContent().build(); // 204
+            return Response.noContent().build();
         } catch (Exception e) {
             e.printStackTrace();
             return Response.serverError().entity("Erro ao deletar colaborador: " + e.getMessage()).build();

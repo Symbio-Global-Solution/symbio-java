@@ -1,17 +1,16 @@
 package br.com.fiap.beans;
 
 public class Cargo {
-
-    //Atributos
+    // Visibilidade, tipo e atributo
     private int id_cargo;
     private String nm_cargo;
     private String ds_cargo;
     private String nivel_risco_ia;
 
-    //Construtores
-    public Cargo() {
-    }
+    // Construtor Vazio
+    public Cargo() {}
 
+    // Construtor Cheio
     public Cargo(int id_cargo, String nm_cargo, String ds_cargo, String nivel_risco_ia) {
         this.id_cargo = id_cargo;
         this.nm_cargo = nm_cargo;
@@ -19,7 +18,7 @@ public class Cargo {
         this.nivel_risco_ia = nivel_risco_ia;
     }
 
-    //Getter e Setters
+    // Método Setter e Getter
     public int getId_cargo() {
         return id_cargo;
     }
@@ -51,4 +50,5 @@ public class Cargo {
     public void setNivel_risco_ia(String nivel_risco_ia) {
         this.nivel_risco_ia = nivel_risco_ia;
     }
+
 }

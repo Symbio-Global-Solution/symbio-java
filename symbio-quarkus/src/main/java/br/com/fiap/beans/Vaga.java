@@ -1,28 +1,27 @@
 package br.com.fiap.beans;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Vaga {
 
-    //Atributos
+    // Visibilidade, tipo e atributos
     private int id_vaga;
     private String ds_titulo;
-    private Date dt_abertura;
+    private LocalDate dt_abertura;
     private String st_vaga;
 
-    //Construtores
+    // Construtor vazio
+    public Vaga() {}
 
-
-    public Vaga() {
-    }
-
-    public Vaga(int id_vaga, String ds_titulo, Date dt_abertura, String st_vaga) {
+    // Construtor cheio
+    public Vaga(int id_vaga, String ds_titulo, LocalDate dt_abertura, String st_vaga) {
         this.id_vaga = id_vaga;
         this.ds_titulo = ds_titulo;
         this.dt_abertura = dt_abertura;
         this.st_vaga = st_vaga;
     }
 
+    // Metodo Setter e Getter
     public int getId_vaga() {
         return id_vaga;
     }
@@ -39,11 +38,11 @@ public class Vaga {
         this.ds_titulo = ds_titulo;
     }
 
-    public Date getDt_abertura() {
+    public LocalDate getDt_abertura() {
         return dt_abertura;
     }
 
-    public void setDt_abertura(Date dt_abertura) {
+    public void setDt_abertura(LocalDate dt_abertura) {
         this.dt_abertura = dt_abertura;
     }
 

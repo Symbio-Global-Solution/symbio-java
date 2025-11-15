@@ -9,7 +9,7 @@ public class TesteConexao {
 
     public static void main(String[] args) {
         try {
-            Connection conexao = new ConexaoFactory().conexao();
+            Connection conexao = new ConexaoFactory().getConexao();
             System.out.println("========================================");
             System.out.println("Conectado com sucesso ao banco de dados!");
             System.out.println("========================================");

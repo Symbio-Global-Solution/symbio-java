@@ -1,24 +1,24 @@
 package br.com.fiap.beans;
 
-public class Vaga_Skill {
+public class VagaSkill {
 
-    //Atributos
+    //Visiblidade, tipo e atributos
     private int id_vaga;
     private int id_skill;
     private int nr_peso;
 
-    //Construtores
-
-
-    public Vaga_Skill() {
+    //Construtor vazio
+    public VagaSkill() {
     }
 
-    public Vaga_Skill(int id_vaga, int id_skill, int nr_peso) {
+    // Costrutor Cheio
+    public VagaSkill(int id_vaga, int id_skill, int nr_peso) {
         this.id_vaga = id_vaga;
         this.id_skill = id_skill;
         this.nr_peso = nr_peso;
     }
 
+    // Metodo Setter e Getter
     public int getId_vaga() {
         return id_vaga;
     }

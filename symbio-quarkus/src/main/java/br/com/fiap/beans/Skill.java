@@ -1,16 +1,16 @@
 package br.com.fiap.beans;
 
 public class Skill {
-
-    //Atributos
+    // Visibilidade, tipo e atributo
     private int id_skill;
     private String nm_skill;
     private String tp_skill;
     private String ds_skill;
 
-    public Skill() {
-    }
+    // Construtor vazio
+    public Skill() {}
 
+    //Construtor cheio
     public Skill(int id_skill, String nm_skill, String tp_skill, String ds_skill) {
         this.id_skill = id_skill;
         this.nm_skill = nm_skill;
@@ -18,6 +18,7 @@ public class Skill {
         this.ds_skill = ds_skill;
     }
 
+    // Metodo Setter e Getter
     public int getId_skill() {
         return id_skill;
     }
