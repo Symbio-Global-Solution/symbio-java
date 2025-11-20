@@ -2,12 +2,12 @@
 
 Backend principal do projeto SYMBIO, desenvolvido para a Global Solution 2025. Esta API é o cérebro da operação, conectando-se ao banco Oracle e servindo os dados para o frontend React.
 
-**Disciplina Relacionada:** *Domain Driven Design using JAVA*
+**Disciplina:** *Domain Driven Design using JAVA*
 
 ## 🛠️ Tecnologias Utilizadas
 * Java
 * Quarkus
-* [cite_start]JDBC (Padrão DAO Clássico) [cite: 339]
+* JDBC 
 * RESTeasy Reactive
 * Oracle Database
 * Maven
@@ -40,13 +40,93 @@ Backend principal do projeto SYMBIO, desenvolvido para a Global Solution 2025. E
     ```
 4.  A API estará disponível em `http://localhost:8080`.
 
-## ☁️ Deploy
-[cite_start]Conforme o edital[cite: 353], esta aplicação será hospedada na nuvem (Render/Railway).
+## ☁️ Deploy e Links
+Esta aplicação está hospedada na nuvem Render.
 
-**URL da API (Produção):** `[LINK DO SEU DEPLOY AQUI]`
+**URL da API (Produção):** `[https://symbio-java-k2x1.onrender.com]`
+**Vídeo de Demonstração:** `[youtube]`
 
-##  deliverables
-[cite_start]Para a entrega final, este repositório será zipado [cite: 363] e acompanhado de:
-* [cite_start]Documentação PDF [cite: 364]
-* [cite_start]Link do Deploy [cite: 365]
-* [cite_start]Vídeo de Demonstração (máx 10 min) [cite: 367]
+## 🚀 Como Usar e Testar a API SYMBIO (Java + Python no Render) 
+
+```
+Este guia explica como testar a API SYMBIO, que consiste em dois microsserviços hospedados no
+plano gratuito do Render:
+```
+1. API Java (Quarkus): https://symbio-java-k2x1.onrender.com
+2. API de IA (Python): https://symbio-api-ia.onrender.com
+
+```
+⚠ Aviso Importante: O "Cold Start" (Inicialização a Frio)
+Ambas as APIs "dormem" após 15 minutos sem uso.
+```
+```
+A API Java (Passo 2) precisa chamar a API de IA (Passo 1). Se a API de IA estiver "dormindo", a API Java
+(que acorda mais rápido) não conseguirá obter o risco de IA a tempo e irá salvar o valor de fallback
+"ANALISE_PENDENTE" no banco de dados.
+```
+```
+Para demonstrar o fluxo completo (onde a IA retorna "ALTO", "MEDIO" ou "BAIXO"), você DEVE
+"aquecer" a API de IA (Python) PRIMEIRO.
+```
+```
+🚀 Passo a Passo para Testar (Roteiro de Demonstração)
+Use o Postman ou o cliente HTTP do IntelliJ.
+```
+```
+Passo 1: "Acordar" a API de IA (Python)
+Primeiro, envie uma requisição direta para a API de IA para forçá-la a "acordar".
+Método: POST
+URL: https://symbio-api-ia.onrender.com/prever/risco
+Body (raw, JSON):
+```
+```
+{ "features": [90, 10, 30] }
+```
+```
+Ação: Clique em "Send" e aguarde. Esta primeira chamada pode demorar de 30 a 60 segundos. Você
+saberá que funcionou quando receber a resposta {"risco_predito": "ALTO"}.
+```
+```
+Passo 2: "Acordar" a API Java (Quarkus)
+Agora que a IA está acordada, acorde o Java.
+Método: GET
+URL: https://symbio-java-k2x1.onrender.com/hello
+Ação: Clique em "Send". Esta chamada também pode demorar alguns segundos. Resultado: Você
+receberá o JSON {"status": "online", ...}.
+```
+```
+Pronto! Ambas as APIs estão "quentes" e prontas para se comunicar.
+```
+---
+```
+🏆 Testando as Funcionalidades
+```
+```
+Agora você pode rodar os testes principais (faça isso nos próximos 10 minutos, antes que elas durmam
+de novo).
+```
+```
+Teste 1: Cadastro com IA
+Método: POST
+URL: https://symbio-java-k2x1.onrender.com/cargos
+Body (raw, JSON):
+```
+```
+{
+"nm_cargo": "Operador de Telemarketing",
+"ds_cargo": "Realizar vendas por telefone seguindo script pré-definido",
+"repetitividade": 95,
+"criatividade": 5,
+"interacao": 100
+}
+```
+```
+Resultado Esperado: 201 Created e o JSON de resposta com "nivel_risco_ia": "ALTO". (A
+IA respondeu com sucesso!)
+```
+```
+Teste 2: Match de 89%)
+Método: GET
+URL: https://symbio-java-k2x1.onrender.com/match/1/
+Resultado Esperado: 200 OK e o JSON com "porcentagemMatch": 89.47.
+```
