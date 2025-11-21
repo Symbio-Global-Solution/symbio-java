@@ -44,7 +44,8 @@ Backend principal do projeto SYMBIO, desenvolvido para a Global Solution 2025. E
 Esta aplicação está hospedada na nuvem Render.
 
 **URL da API (Produção):** `[https://symbio-java-k2x1.onrender.com]`
-**Vídeo de Demonstração:** `[youtube]`
+**Vídeo de Demonstração:** `https://www.youtube.com/watch?v=dFaqvPYaIJc`
+**Vídeo Pitch:** `https://youtu.be/mT2-jy_XQQ0`
 
 ## 🚀 Como Usar e Testar a API SYMBIO (Java + Python no Render) 
 
