@@ -1,3 +1,6 @@
+# PARA USAR PRECISA ESTAR COM A API RODANDO LOCALHOST
+###passo 1: "Acordar" a API de IA conforme explicado no pdf
+
 ### Teste 1: Verificar se está online
 GET http://localhost:8080/hello
 
@@ -6,7 +9,7 @@ POST http://localhost:8080/cargos
 Content-Type: application/json
 
 {
-  "nm_cargo": "Operador de Telemarketing",
+  "nm_cargo": "Operador de Tele-marketing",
   "ds_cargo": "Realizar vendas por telefone seguindo script pré-definido",
   "repetitividade": 95,
   "criatividade": 5,

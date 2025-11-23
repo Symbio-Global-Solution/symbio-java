@@ -5,7 +5,7 @@ import java.util.List;
 public class MatchDTO {
     private String nomeColaborador;
     private String tituloVaga;
-    private double porcentagemMatch; // Ex: 85.5
+    private double porcentagemMatch; 
     private List<String> skillsEmComum;
     private List<String> skillsFaltantes;
 

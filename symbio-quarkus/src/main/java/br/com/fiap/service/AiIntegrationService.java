@@ -11,6 +11,6 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 public interface AiIntegrationService {
 
     @POST
-    @Path("/risco") // Rota final será: /prever/risco
+    @Path("/risco") 
     AiResponseDTO preverRisco(AiRequestDTO request);
 }
