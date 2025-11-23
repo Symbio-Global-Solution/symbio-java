@@ -28,7 +28,7 @@ Backend principal do projeto SYMBIO, desenvolvido para a Global Solution 2025. E
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/](https://github.com/)[seu-usuario]/symbio-api-java.git
+    git clone https://github.com/Symbio-Global-Solution/symbio-java.git
     cd symbio-api-java
     ```
 2.  **Configure o Banco de Dados:**
